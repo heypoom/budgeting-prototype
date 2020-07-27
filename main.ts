@@ -1,3 +1,14 @@
+import {
+  Budget,
+  Frequency,
+  Plan,
+  PlanCategory,
+  Investment,
+  FinancialPlan,
+  PlanTypes,
+  planCategory,
+} from './types'
+
 const fs = require('fs')
 
 // 1) Give Each Dollar a Job (allocate them into categories)
@@ -11,46 +22,6 @@ const investmentRegex = /invest in (.*) (\d+)%/
 const categorizeBudgetRegex = /(necessity|security|education|lifestyle|dream|investment)\: (.*)/
 
 const frequencies = ['daily', 'weekly', 'monthly', 'yearly'] as const
-
-const planCategory = [
-  'necessity',
-  'security',
-  'education',
-  'lifestyle',
-  'dream',
-  'investment',
-] as const
-
-type Frequency = typeof frequencies[number]
-type PlanCategory = typeof planCategory[number]
-
-interface Plan {
-  category: PlanCategory
-  percent?: number
-  fixed?: number
-}
-
-interface Investment {
-  category: string
-  percent: number
-}
-
-interface Budget {
-  isFlexible: boolean
-  frequency: Frequency
-  category: string
-  amount: number
-  title: string
-}
-
-type PlanTypes = Record<string, PlanCategory>
-
-interface FinancialPlan {
-  plan: Plan[]
-  budget: Budget[]
-  investment: Investment[]
-  types: PlanTypes
-}
 
 const sum = (list: number[]) => Math.round(list.reduce((a, b) => a + b, 0))
 
@@ -243,7 +214,6 @@ function calculate(p: FinancialPlan, totalBudget: number) {
 const text: string = fs.readFileSync('./my.budget', 'utf-8')
 
 const financialPlan = createFinancialPlanFromText(text) //?
-const calculations = calculate(financialPlan, 150000) //?
+const calculations = calculate(financialPlan, 130000) //?
 
 console.log(calculations)
-

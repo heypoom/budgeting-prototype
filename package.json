@@ -6,5 +6,9 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^14.0.24"
+  },
+  "dependencies": {
+    "commander": "^6.0.0",
+    "inquirer": "^7.3.3"
   }
 }
