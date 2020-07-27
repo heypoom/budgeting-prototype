@@ -21,8 +21,6 @@ const planRegex = /(necessity|security|education|lifestyle|dream|investment)\s(\
 const investmentRegex = /invest in (.*) (\d+)%/
 const categorizeBudgetRegex = /(necessity|security|education|lifestyle|dream|investment)\: (.*)/
 
-const frequencies = ['daily', 'weekly', 'monthly', 'yearly'] as const
-
 const sum = (list: number[]) => Math.round(list.reduce((a, b) => a + b, 0))
 
 function createBudgetFromText(text: string): Budget[] {
